@@ -3,15 +3,18 @@ import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import App from './App'
 import {AppStateTypes} from '../redux/store/templates/appState'
+import {AlbumCollectionStateTypes} from '../redux/store/templates/albumCollectionState'
 import {changeInputValue, fetchAlbumsByArtist} from '../redux/actions/index'
 
 interface mapStateToPropsTypes {
     appState: AppStateTypes;
+    albumCollection: AlbumCollectionStateTypes[];
 }
 
 const mapStateToProps = (state: mapStateToPropsTypes, ownProps) =>  {
     return {
-        appState: state.appState
+        appState: state.appState,
+        albumCollection: state.albumCollection,
     }
 }
 

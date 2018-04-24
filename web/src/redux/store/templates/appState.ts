@@ -1,16 +1,8 @@
 export const appState: AppStateTypes = {
-    artistToSearch: 'savant',
-    inputs: {
-
-    },
+    artistIdToSearch: 301490824,
 }
 
 export interface AppStateTypes {
-    artistToSearch: string;
-    inputs: InputTypes;
-
-}
-
-export interface InputTypes {
+    artistIdToSearch: number;
 
 }

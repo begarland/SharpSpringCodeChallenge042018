@@ -1,13 +1,13 @@
 /* helpers */
 
-@import 'sass-helpers/fonts';
-@import 'sass-helpers/variables';
-@import 'sass-helpers/mixins';
+@import 'sass-helpers/_fonts';
+@import 'sass-helpers/_variables';
+@import 'sass-helpers/_mixins';
 
-@import 'content/App';
-@import 'content/sample/ObservableSample';
+@import 'content/common/_common';
 
-@import 'content/common/common';
+@import 'content/_App';
+@import 'content/components/AlbumCard/_AlbumCard';
 
 body {
   margin: 0;
@@ -19,7 +19,6 @@ body {
 html {
   width: 100vw;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 #root{

@@ -10,10 +10,13 @@ interface AlbumCollectionTypes extends AppPropTypes {
 const AlbumCollection = (props: AlbumCollectionTypes) => {
     return (
         <div className="album-collection">
-            {props.albumCollection.map((album, index) => {
-                return (
-                    <AlbumCard {...album} key={index}/>
-                )
+            {props.albumCollection.albums.map((album, index) => {
+                if (album.wrapperType === 'collection'){
+                    return (
+                        <AlbumCard {...album} key={index}/>
+                    )
+                }
+                return null
             })}
         </div>
     )

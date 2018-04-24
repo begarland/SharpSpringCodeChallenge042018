@@ -1,9 +1,8 @@
 .label {
   @include bold-font;
-  text-align: right;
-  width: 100px;
-  margin-right: 5px;
-  display: inline-block;
+  text-align: left;
+  margin-left: 5px;
+  display: block;
 }
 
 .select {

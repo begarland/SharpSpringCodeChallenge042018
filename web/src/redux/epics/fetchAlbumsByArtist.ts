@@ -11,9 +11,10 @@ const fetchArtistInformationEpic = (action$, store) =>
     action$.pipe(
         ofType(FETCH_ALBUMS_BY_ARTIST),
         switchMap(() =>
-            axios.get(`https://itunes.apple.com/search?${store.getState().appState.artistToSearch}`)
+            axios.get(`https://itunes.apple.com/lookup?id=${store.getState().appState.artistIdToSearch}&entity=album`)
                 .then(response => {
-                    return ({type: FETCH_ALBUMS_BY_ARTIST_SUCCESSFUL, artistInformation: response})
+                    console.log(response)
+                    return ({type: FETCH_ALBUMS_BY_ARTIST_SUCCESSFUL, artistInformation: response.data})
                 })
                 .catch((error) => {
                     console.error(error.message)
