@@ -3,12 +3,12 @@ import LabelComponent from '../../common/LabelComponent/LabelComponent'
 import {AlbumTypes} from '../../../redux/store/templates/albumCollectionState'
 
 interface AlbumCardTypes extends AlbumTypes {
-    fetchAlbumDetailsByCollectionId: (collectionId: number) => (event: MouseEvent) => void;
+    fetchAlbumDetailsByCollectionId: (MouseEvent) => void;
 }
 
 const AlbumCard = (props: AlbumCardTypes) => {
     return (
-        <div className="album-card" >
+        <div className="album-card" onClick={props.fetchAlbumDetailsByCollectionId}>
             <img src={props.artworkUrl100}/>
             <div className="album-information">
                 <LabelComponent label={props.collectionName} additionalClasses="bold-font"/>

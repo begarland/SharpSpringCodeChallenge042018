@@ -9,7 +9,7 @@ export interface AppPropTypes {
     albumCollection: AlbumCollectionStateTypes;
     albumTracks: AlbumTracksStateTypes;
     fetchAlbumsByArtist: () => void;
-    fetchAlbumDetailsByCollectionId: (collectionId: number) => (Event: MouseEvent) => void;
+    fetchAlbumDetailsByCollectionId: (collectionId: number, collectionName: string) => (Event: MouseEvent) => void;
 }
 interface ComponentAppStateTypes {}
 

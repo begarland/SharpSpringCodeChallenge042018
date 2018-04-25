@@ -16,7 +16,7 @@ const AlbumCollection = (props: AlbumCollectionTypes) => {
                 {props.albumCollection.albums.map((album, index) => {
                     if (album.wrapperType === 'collection'){
                         return (
-                            <AlbumCard {...album} key={index} fetchAlbumDetailsByCollectionId={props.fetchAlbumDetailsByCollectionId}/>
+                            <AlbumCard {...album} key={index} fetchAlbumDetailsByCollectionId={props.fetchAlbumDetailsByCollectionId(album.collectionId, album.collectionName)}/>
                         )
                     }
                     return null

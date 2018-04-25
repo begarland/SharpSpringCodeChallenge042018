@@ -12,7 +12,7 @@ const fetchAlbumDetailsByCollectionId = (action$, store) =>
     action$.pipe(
         ofType(FETCH_ALBUM_DETAILS_BY_COLLECTION_ID),
         switchMap(() =>
-            axios.get(`https://itunes.apple.com/lookup?id=${store.getState().albumTracks.collectionIdToSearch}&entity=track`)
+            axios.get(`https://itunes.apple.com/lookup?id=${store.getState().albumTracks.collectionIdToSearch}&entity=song`)
                 .then(response => {
                     console.log(response)
                     store.dispatch(push(`/${store.getState().albumTracks.collectionIdToSearch}`))

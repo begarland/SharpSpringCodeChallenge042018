@@ -10,6 +10,6 @@ export const fetchAlbumsByArtist = () => {
     return ({type: FETCH_ALBUMS_BY_ARTIST})
 }
 
-export const fetchAlbumDetailsByCollectionId = (collectionId: number) => {
-    return ({type: FETCH_ALBUM_DETAILS_BY_COLLECTION_ID, collectionId})
+export const fetchAlbumDetailsByCollectionId = (collectionId: number, collectionName: string,) => {
+    return ({type: FETCH_ALBUM_DETAILS_BY_COLLECTION_ID, collectionId, collectionName})
 }

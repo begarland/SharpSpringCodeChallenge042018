@@ -11,6 +11,7 @@ export default (state: AlbumTracksStateTypes = albumTracks, action) => {
             return {
                 ...state,
                 collectionIdToSearch: action.collectionId,
+                collectionName: action.collectionName,
             }
         }
         case FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_SUCCESSFUL: {
