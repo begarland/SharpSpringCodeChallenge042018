@@ -1,20 +1,23 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { push } from 'react-router-redux'
 import App from './App'
 import {AppStateTypes} from '../redux/store/templates/appState'
 import {AlbumCollectionStateTypes} from '../redux/store/templates/albumCollectionState'
-import {changeInputValue, fetchAlbumsByArtist} from '../redux/actions/index'
+import {changeInputValue, fetchAlbumDetailsByCollectionId, fetchAlbumsByArtist} from '../redux/actions/index'
 
 interface mapStateToPropsTypes {
     appState: AppStateTypes;
-    albumCollection: AlbumCollectionStateTypes[];
+    albumCollection: AlbumCollectionStateTypes;
+    albumTracks: AlbumCollectionStateTypes;
+
 }
 
 const mapStateToProps = (state: mapStateToPropsTypes, ownProps) =>  {
     return {
         appState: state.appState,
         albumCollection: state.albumCollection,
+        albumTracks: state.albumTracks,
+
     }
 }
 
@@ -22,6 +25,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchAlbumsByArtist: () => {
             dispatch(fetchAlbumsByArtist())
+        },
+        fetchAlbumDetailsByCollectionId: (collectionId: number) => {
+            dispatch(fetchAlbumDetailsByCollectionId(collectionId))
         },
         inputChange: (key, value) => {
             dispatch(changeInputValue(key, value))

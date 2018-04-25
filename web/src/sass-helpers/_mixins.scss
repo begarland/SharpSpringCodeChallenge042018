@@ -49,3 +49,8 @@
   font-weight: bold;
   font-size: $regular-font-size;
 }
+
+@mixin regular-font {
+  font-family: $regular-font;
+  font-size: $regular-font-size;
+}

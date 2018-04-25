@@ -8,6 +8,8 @@
 
 @import 'content/_App';
 @import 'content/components/AlbumCard/_AlbumCard';
+@import 'content/components/AlbumCollection/_AlbumCollection';
+@import 'content/components/AlbumDetailsView/_AlbumDetailsView';
 
 body {
   margin: 0;
@@ -25,5 +27,5 @@ html {
 
   width: 100vw;
   min-height: 100vh;
-  background-color: $gray;
+  background-color: $white;
 }

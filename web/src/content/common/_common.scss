@@ -1,15 +1,19 @@
 .label {
-  @include bold-font;
+  @include regular-font;
   text-align: left;
   margin-left: 5px;
   display: block;
 }
 
+.bold-font {
+  @include bold-font;
+}
+
 .select {
-@include bold-font;
+@include regular-font;
   margin-left: 5px;
   option{
-    @include bold-font;
+    @include regular-font;
   }
 }
 

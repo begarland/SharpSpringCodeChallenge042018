@@ -1,20 +1,71 @@
 .album-card {
-  min-width: 320px;
-  width: 100vw;
-  max-width: 500px;
+  width: calc((100vw)/3 - 20px);
   display: inline-block;
-  margin-left: 5px;
+  margin: 2.5px 2.5px;
+  height: 100px;
+  border: $border-dark;
+
+  &:nth-of-type(odd){
+    background-color: $alternating-color-one;
+  }
+
+  &:nth-of-type(even){
+    background-color: $alternating-color-two;
+
+  }
 
   img {
     display: inline-block;
     text-align: left;
+    width: 100px;
+    height: 100px;
+
   }
 
   .album-information {
     min-width: 200px;
-    width: calc(100vw - 110px);
+    width: 200px;
     display: inline-block;
     vertical-align: top;
+    margin-top: 5px;
+  }
+
+
+  @media (max-width: $landscape-phone-to-portrait-tablet-max-width) {
+    width: calc(100vw - 10px);
+    min-width: 300px;
+
+
+    .album-information {
+      width: calc(100vw - 110px);
+    }
+  }
+
+  @media (min-width: $portrait-tablet-to-landscape-and-desktop-min-width) and (max-width: $portrait-tablet-to-landscape-and-desktop-max-width) {
+    width: 48vw;
+
+    &:nth-child(4n) {
+      background-color: $alternating-color-one;
+    }
+    &:nth-child(4n+1) {
+      background-color: $alternating-color-two;
+    }
+    &:nth-child(4n+2) {
+      background-color: $alternating-color-two;
+    }
+    &:nth-child(4n+3) {
+      background-color: $alternating-color-one;
+    }
+
+  }
+
+  @media (min-width: $large-desktop-min-width) {
+    .album-information{
+      width: 280px;
+    }
+
+
+
   }
 
 }
