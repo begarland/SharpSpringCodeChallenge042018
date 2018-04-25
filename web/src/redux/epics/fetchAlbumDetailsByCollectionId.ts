@@ -6,7 +6,6 @@ import {
     FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_FAILED,
     FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_SUCCESSFUL
 } from '../actions/actionTypes'
-import {push} from 'react-router-redux'
 
 const fetchAlbumDetailsByCollectionId = (action$, store) =>
     action$.pipe(
@@ -14,8 +13,6 @@ const fetchAlbumDetailsByCollectionId = (action$, store) =>
         switchMap(() =>
             axios.get(`https://itunes.apple.com/lookup?id=${store.getState().albumTracks.collectionIdToSearch}&entity=song`)
                 .then(response => {
-                    console.log(response)
-                    store.dispatch(push(`/${store.getState().albumTracks.collectionIdToSearch}`))
                     return ({type: FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_SUCCESSFUL, albumInformation: response.data})
                 })
                 .catch((error) => {

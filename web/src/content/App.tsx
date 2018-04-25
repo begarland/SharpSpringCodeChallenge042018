@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { AppStateTypes } from '../redux/store/templates/appState'
 import AlbumCollection from './components/AlbumCollection/AlbumCollection'
-import {AlbumCollectionStateTypes} from '../redux/store/templates/albumCollectionState'
-import {AlbumTracksStateTypes} from '../redux/store/templates/albumTracksState'
+import { Route, Switch } from 'react-router'
+import { AppStateTypes } from '../redux/store/templates/appState'
+import { AlbumCollectionStateTypes } from '../redux/store/templates/albumCollectionState'
+import { AlbumTracksStateTypes } from '../redux/store/templates/albumTracksState'
+import AlbumDetailsView from './components/AlbumDetailsView/AlbumDetailsView'
 
 export interface AppPropTypes {
     appState: AppStateTypes;
@@ -19,7 +21,6 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
         this.state = {
 
         }
-
     }
 
     componentDidMount(){
@@ -29,7 +30,25 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
     render(){
         return (
             <div className="App">
-                <AlbumCollection {...this.props}/>
+                <Switch>
+                    <Route
+                        exact={true}
+                        path="/"
+                        render={() => {
+                            return (
+                                <AlbumCollection {...this.props}/>
+                            )
+                        }}
+                    />
+                    <Route
+                        path="/album/"
+                        render={() => {
+                            return (
+                                <AlbumDetailsView {...this.props}/>
+                            )
+                        }}
+                    />
+                </Switch>
             </div>
         )
     }
