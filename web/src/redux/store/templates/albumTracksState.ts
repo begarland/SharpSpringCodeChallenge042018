@@ -1,10 +1,12 @@
 export const albumTracks: AlbumTracksStateTypes = {
     collectionIdToSearch: null,
+    collectionName: '',
     tracks: [],
 }
 
 export interface AlbumTracksStateTypes {
     collectionIdToSearch: null | number;
+    collectionName: string;
     tracks: TrackTypes[]
 }
 
@@ -23,9 +25,9 @@ export interface TrackTypes {
     collectionViewUrl: string;
     trackViewUrl: string;
     previewUrl: string;
-    artworkUrl30: number;
-    artworkUrl60: number;
-    artworkUrl199: number;
+    artworkUrl30: string;
+    artworkUrl60: string;
+    artworkUrl100: string;
     collectionPrice: number;
     trackPrice: number;
     releaseDate: string;

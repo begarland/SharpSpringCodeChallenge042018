@@ -11,11 +11,14 @@ const AlbumDetailsView = (props: AlbumDetailsViewTypes) => {
     return (
         <div className="album-details-view">
 
-
             <div className="track-container">
-                <AlbumDetails {...props}/>
                 {props.albumTracks.tracks.map((track, index) => {
-                    if (track.wrapperType === 'track') {
+                    if (track.wrapperType === 'collection'){
+                        return (
+                            <AlbumDetails {...track} key={index}/>
+                        )
+                    }
+                    else if (track.wrapperType === 'track') {
                         return (
                             <TrackCard
                                 {...track}

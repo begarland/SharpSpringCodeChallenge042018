@@ -29,7 +29,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         fetchAlbumDetailsByCollectionId: (collectionId: number, collectionName: string,) => (event: MouseEvent) => {
             dispatch(fetchAlbumDetailsByCollectionId(collectionId, collectionName))
-            dispatch(push(`/album/${collectionName}`))
         },
         inputChange: (key, value) => {
             dispatch(changeInputValue(key, value))

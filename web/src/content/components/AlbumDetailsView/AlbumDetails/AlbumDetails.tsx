@@ -1,13 +1,15 @@
 import * as React from 'react'
 import LabelComponent from '../../../common/LabelComponent/LabelComponent'
 import {AlbumTypes} from '../../../../redux/store/templates/albumCollectionState'
+import {TrackTypes} from '../../../../redux/store/templates/albumTracksState'
 
-interface AlbumDetailsTypes extends AlbumTypes {}
+interface AlbumDetailsTypes extends TrackTypes {
+}
 
 const AlbumDetails = (props: AlbumDetailsTypes) => {
     return (
         <div className="album-details">
-            <img src={props.artworkUrl100} className="large-album-art"/>
+            <img src={props.artworkUrl100} />
             <div className="album-information">
                 <LabelComponent label={props.collectionName}/>
                 <LabelComponent label={props.artistName}/>

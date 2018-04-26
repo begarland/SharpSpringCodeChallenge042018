@@ -62,6 +62,7 @@
     "redux-observable": "^0.18.0",
     "redux-promise-middleware": "^4.3.0",
     "redux-thunk": "^2.2.0",
+    "rxios": "^1.1.2",
     "rxjs": "^5.5.10"
   },
   "deprecated": false,
