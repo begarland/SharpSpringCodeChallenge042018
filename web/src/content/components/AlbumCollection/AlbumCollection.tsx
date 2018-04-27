@@ -1,7 +1,7 @@
 import * as React from 'react'
 import AlbumCard from '../AlbumCard/AlbumCard'
 import {AppPropTypes} from '../../App'
-import LabelComponent from '../../common/LabelComponent/LabelComponent'
+import LabelComponent from '../../common/LabelComponents/Label'
 
 
 interface AlbumCollectionTypes extends AppPropTypes {

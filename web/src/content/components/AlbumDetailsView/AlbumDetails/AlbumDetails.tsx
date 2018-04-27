@@ -1,21 +1,20 @@
 import * as React from 'react'
-import LabelComponent from '../../../common/LabelComponent/LabelComponent'
+import LabelComponent from '../../../common/LabelComponents/Label'
 import {AlbumTypes} from '../../../../redux/store/templates/albumCollectionState'
-import {TrackTypes} from '../../../../redux/store/templates/albumTracksState'
+import LabelPairComponent from '../../../common/LabelComponents/LabelPair'
+import {dateFormatToReadableDate} from '../../../common/commonFunctions'
 
-interface AlbumDetailsTypes extends TrackTypes {
-}
-
-const AlbumDetails = (props: AlbumDetailsTypes) => {
+const AlbumDetails = (props: AlbumTypes) => {
     return (
         <div className="album-details">
-            <img src={props.artworkUrl100} />
             <div className="album-information">
-                <LabelComponent label={props.collectionName}/>
-                <LabelComponent label={props.artistName}/>
-                <LabelComponent label={(props.releaseDate).substr(0, 10)}/>
-                <LabelComponent label={`$${props.collectionPrice}`}/>
+                <LabelPairComponent label="Album" data={props.collectionName}/>
+                <LabelPairComponent label="Artist" data={props.artistName}/>
+                <LabelPairComponent label="Release Date" data={dateFormatToReadableDate(props.releaseDate)}/>
+                <LabelPairComponent label="Price" data={`$${props.collectionPrice} ${props.currency}`}/>
+                <LabelPairComponent label="Copyright" data={props.copyright}/>
             </div>
+            <img src={props.artworkUrl100} className="album-info-artwork"/>
 
         </div>
     )

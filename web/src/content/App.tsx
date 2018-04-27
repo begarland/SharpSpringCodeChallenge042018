@@ -44,7 +44,7 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
                         path="/album/"
                         render={() => {
                             return (
-                                <AlbumDetailsView {...this.props}/>
+                                <AlbumDetailsView {...this.props.albumTracks} />
                             )
                         }}
                     />

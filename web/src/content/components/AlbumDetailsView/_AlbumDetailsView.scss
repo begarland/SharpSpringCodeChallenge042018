@@ -1,4 +1,42 @@
-.album-details {
+.album-details-view {
 
+  .album-information {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px;
+    min-height: 100px;
+
+    @media (max-width: $small-phone-max-width) {
+      width: 220px;
+      margin: 0px;
+
+      .inline-label {
+        max-width: 155px;
+        vertical-align: top;
+      }
+    }
+
+    @media (max-width: $landscape-phone-and-below-max-width) {
+      .inline-label {
+        max-width: 194px;
+        vertical-align: top;
+      }
+    }
+  }
+
+
+  .album-info-artwork {
+    display: inline-block;
+    float: right;
+  }
+
+  .album-details {
+    width: 75vw;
+    margin: 10px auto;
+
+    @media (max-width: $portrait-tablet-to-landscape-and-desktop-max-width) {
+      width: 100vw;
+    }
+  }
 
 }

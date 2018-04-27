@@ -9,6 +9,25 @@
   @include bold-font;
 }
 
+.inline-label{
+  display: inline-block;
+  vertical-align: top;
+
+  @media (min-width: $portrait-tablet-to-landscape-and-desktop-min-width) and (max-width: $large-desktop-min-width){
+    max-width: 500px;
+    vertical-align: top;
+  }
+
+  @media (max-width: $landscape-phone-to-portrait-tablet-max-width){
+    font-size: 14px;
+  }
+
+  @media (max-width: $small-phone-max-width) {
+    font-size: 12px;
+    margin-left: 2px;
+  }
+
+}
 .select {
 @include regular-font;
   margin-left: 5px;
@@ -26,4 +45,64 @@
   margin: auto;
   text-align: left;
   margin-top: 5px;
+}
+
+
+#table-container {
+  width: 100vw;
+  padding-bottom: 20px;
+
+  table {
+    width: 98vw;
+    max-width: 500px;
+    margin: auto;
+    border-collapse: collapse;
+
+
+    thead th {
+      @include bold-font;
+      text-align: center;
+
+      &:first-of-type{
+        text-align: left;
+      }
+
+      @media (max-width: $landscape-phone-to-portrait-tablet-max-width){
+        font-size: 14px;
+      }
+
+      @media (max-width: $small-phone-max-width) {
+        font-size: 12px;
+        margin-left: 2px;
+      }
+
+
+    }
+
+    tbody td {
+      text-align: center;
+      border: $border-dark;
+
+      &:first-of-type {
+        text-align: left;
+      }
+
+      &:last-of-type {
+        text-align: center;
+      }
+
+    }
+
+    tbody tr {
+      &:nth-of-type(odd){
+        background-color: $alternating-color-one;
+      }
+
+      &:nth-of-type(even){
+        background-color: $alternating-color-two;
+      }
+    }
+
+  }
+
 }

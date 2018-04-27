@@ -1,36 +1,48 @@
 import * as React from 'react'
-import TrackCard from './TrackCard/TrackCard'
-import {AppPropTypes} from '../../App'
 import AlbumDetails from './AlbumDetails/AlbumDetails'
+import {AlbumTracksStateTypes, TrackTypes} from '../../../redux/store/templates/albumTracksState'
+import {AlbumTypes} from '../../../redux/store/templates/albumCollectionState'
+import TrackTable from './Track/TrackTable'
+import Label from '../../common/LabelComponents/Label'
 
-interface AlbumDetailsViewTypes extends AppPropTypes {
+interface AlbumDetailsViewStateTypes {}
 
-}
 
-const AlbumDetailsView = (props: AlbumDetailsViewTypes) => {
-    return (
-        <div className="album-details-view">
+class AlbumDetailsView extends React.Component<AlbumTracksStateTypes, AlbumDetailsViewStateTypes>{
+  constructor(props) {
+      super(props)
+      this.state = {
 
-            <div className="track-container">
-                {props.albumTracks.tracks.map((track, index) => {
-                    if (track.wrapperType === 'collection'){
-                        return (
-                            <AlbumDetails {...track} key={index}/>
-                        )
-                    }
-                    else if (track.wrapperType === 'track') {
-                        return (
-                            <TrackCard
-                                {...track}
-                                key={index}
-                            />
-                        )
-                    }
-                    return null
-                })}
-            </div>
-        </div>
-    )
+      }
+  }
+
+  componentDidMount() {
+      window.scrollTo(0, 0)
+  }
+
+  render() {
+      let albumDetails: AlbumTypes
+
+      const trackDetails: TrackTypes[] = []
+
+      this.props.tracks.map((albumDetailOrTrack) => {
+          if (albumDetailOrTrack.wrapperType === 'collection'){
+              albumDetails = albumDetailOrTrack as AlbumTypes
+          } else if (albumDetailOrTrack.wrapperType === 'track') {
+              trackDetails.push(albumDetailOrTrack as TrackTypes)
+          }
+      })
+
+      return (
+          <div className="album-details-view">
+              <AlbumDetails {...albumDetails}/>
+              <div className="track-container">
+                  <TrackTable trackDetails={trackDetails}/>
+              </div>
+          </div>
+      )
+  }
+
 }
 
 export default AlbumDetailsView

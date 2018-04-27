@@ -1,3 +1,5 @@
+import {AlbumTypes} from './albumCollectionState'
+
 export const albumTracks: AlbumTracksStateTypes = {
     collectionIdToSearch: null,
     collectionName: '',
@@ -7,7 +9,7 @@ export const albumTracks: AlbumTracksStateTypes = {
 export interface AlbumTracksStateTypes {
     collectionIdToSearch: null | number;
     collectionName: string;
-    tracks: TrackTypes[]
+    tracks: (TrackTypes|AlbumTypes)[];
 }
 
 export interface TrackTypes {
