@@ -4,12 +4,14 @@ import { withRouter } from 'react-router-dom'
 import { AppStateTypes } from '../redux/store/templates/appState'
 import { AlbumCollectionStateTypes } from '../redux/store/templates/albumCollectionState'
 import { push } from 'react-router-redux'
-import { changeInputValue, fetchAlbumDetailsByCollectionId, fetchAlbumsByArtist } from '../redux/actions/index'
+import { changeInputValue, fetchAlbumDetailsByCollectionId, fetchAlbumsByArtistId, fetchArtistsByName } from '../redux/actions/index'
+import {ArtistSearchTypes} from '../redux/store/templates/artistSearchState'
 
 interface mapStateToPropsTypes {
     appState: AppStateTypes;
     albumCollection: AlbumCollectionStateTypes;
     albumTracks: AlbumCollectionStateTypes;
+    artistSearch: ArtistSearchTypes;
 
 }
 
@@ -18,17 +20,27 @@ const mapStateToProps = (state: mapStateToPropsTypes, ownProps) =>  {
         appState: state.appState,
         albumCollection: state.albumCollection,
         albumTracks: state.albumTracks,
+        artistSearch: state.artistSearch,
 
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        fetchAlbumsByArtist: () => {
-            dispatch(fetchAlbumsByArtist())
+        fetchAlbumsByArtistId: () => {
+            dispatch(fetchAlbumsByArtistId())
         },
-        fetchAlbumDetailsByCollectionId: (collectionId: number, collectionName: string,) => (event: MouseEvent) => {
-            dispatch(fetchAlbumDetailsByCollectionId(collectionId, collectionName))
+        fetchAlbumDetailsByCollectionIdRedirect: (collectionId: number, collectionName: string,) => (event: MouseEvent) => {
+            dispatch(fetchAlbumDetailsByCollectionId(collectionId, collectionName, true))
+        },
+        fetchAlbumDetailsByCollectionIdNoRedirect: (collectionId: number, collectionName: string,) => (event: MouseEvent) => {
+            dispatch(fetchAlbumDetailsByCollectionId(collectionId, collectionName, false))
+        },
+        searchForNewArtist: () => {
+            dispatch(push('/artistSearch'))
+        },
+        fetchArtistsByName: () => {
+            dispatch(fetchArtistsByName())
         },
         inputChange: (key, value) => {
             dispatch(changeInputValue(key, value))

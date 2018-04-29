@@ -1,0 +1,29 @@
+.album-collection-label {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  text-align: center;
+  width: 100vw;
+  display: block;
+
+  @media (min-width: $portrait-tablet-to-landscape-and-desktop-max-width){
+    width: 50vw;
+
+  }
+
+}
+
+.album-card-collection {
+
+}
+
+.album-collection {
+
+  @media (min-width: $portrait-tablet-to-landscape-and-desktop-max-width){
+    width: 50%;
+    display: inline-block;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+  }
+}

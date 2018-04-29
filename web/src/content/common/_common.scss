@@ -14,7 +14,6 @@
   vertical-align: top;
 
   @media (min-width: $portrait-tablet-to-landscape-and-desktop-min-width) and (max-width: $large-desktop-min-width){
-    max-width: 500px;
     vertical-align: top;
   }
 
@@ -49,7 +48,6 @@
 
 
 #table-container {
-  width: 100vw;
   padding-bottom: 20px;
 
   table {
@@ -62,9 +60,11 @@
     thead th {
       @include bold-font;
       text-align: center;
+      width: 13%;
 
       &:first-of-type{
         text-align: left;
+        width: 74%;
       }
 
       @media (max-width: $landscape-phone-to-portrait-tablet-max-width){
@@ -82,9 +82,13 @@
     tbody td {
       text-align: center;
       border: $border-dark;
+      width: 13%;
+
+
 
       &:first-of-type {
         text-align: left;
+        width: 74%;
       }
 
       &:last-of-type {
@@ -95,14 +99,18 @@
 
     tbody tr {
       &:nth-of-type(odd){
-        background-color: $alternating-color-one;
+        background-color: $alternating-color-three;
       }
 
       &:nth-of-type(even){
-        background-color: $alternating-color-two;
+        background-color: $alternating-color-four;
       }
     }
 
   }
 
+}
+
+.play-pause-button {
+  @include button;
 }

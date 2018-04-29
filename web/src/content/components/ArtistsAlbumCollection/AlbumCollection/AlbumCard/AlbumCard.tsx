@@ -1,6 +1,6 @@
 import * as React from 'react'
-import LabelComponent from '../../common/LabelComponents/Label'
-import {AlbumTypes} from '../../../redux/store/templates/albumCollectionState'
+import LabelComponent from '../../../../common/LabelComponents/Label'
+import {AlbumTypes} from '../../../../../redux/store/templates/albumCollectionState'
 
 interface AlbumCardTypes extends AlbumTypes {
     fetchAlbumDetailsByCollectionId: (MouseEvent) => void;

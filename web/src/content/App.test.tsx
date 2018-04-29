@@ -14,17 +14,25 @@ Enzyme.configure({adapter: new Adapter()})
 describe('<App/>', () => {
 
 
-    const fetchAlbumsByArtist = sinon.spy()
-    const fetchAlbumDetailsByCollectionId = sinon.spy()
+    const fetchAlbumsByArtistId = sinon.spy()
+    const fetchAlbumDetailsByCollectionIdRedirect = sinon.spy()
+    const fetchAlbumDetailsByCollectionIdNoRedirect = sinon.spy()
+    const fetchArtistsByName = sinon.spy()
+    const searchForNewArtist = sinon.spy()
+    const inputChange = sinon.spy()
+
 
     const AppAllProps = (
         <App
             appState={appState}
             albumCollection={albumCollection}
             albumTracks={albumTracks}
-            fetchAlbumsByArtist={fetchAlbumsByArtist}
-            fetchAlbumDetailsByCollectionId={fetchAlbumDetailsByCollectionId}
-
+            fetchAlbumsByArtistId={fetchAlbumsByArtistId}
+            fetchAlbumDetailsByCollectionIdRedirect={fetchAlbumDetailsByCollectionIdRedirect}
+            fetchAlbumDetailsByCollectionIdNoRedirect={fetchAlbumDetailsByCollectionIdNoRedirect}
+            fetchArtistsByName={fetchArtistsByName}
+            searchForNewArtist={searchForNewArtist}
+            inputChange={inputChange}
         />)
 
     let AppAllPropsShallow

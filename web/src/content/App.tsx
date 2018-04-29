@@ -1,17 +1,25 @@
 import * as React from 'react'
-import AlbumCollection from './components/AlbumCollection/AlbumCollection'
 import { Route, Switch } from 'react-router'
 import { AppStateTypes } from '../redux/store/templates/appState'
-import { AlbumCollectionStateTypes } from '../redux/store/templates/albumCollectionState'
+import {AlbumCollectionStateTypes, AlbumTypes} from '../redux/store/templates/albumCollectionState'
 import { AlbumTracksStateTypes } from '../redux/store/templates/albumTracksState'
 import AlbumDetailsView from './components/AlbumDetailsView/AlbumDetailsView'
+import ArtistSearch from './components/ArtistSearch/ArtistSearch'
+import ArtistDetails from './components/ArtistsAlbumCollection/ArtistDetails'
+import AlbumCollection from './components/ArtistsAlbumCollection/AlbumCollection/AlbumCollection'
+import {ArtistTypes} from '../redux/store/templates/artistSearchState'
 
 export interface AppPropTypes {
     appState: AppStateTypes;
     albumCollection: AlbumCollectionStateTypes;
     albumTracks: AlbumTracksStateTypes;
-    fetchAlbumsByArtist: () => void;
-    fetchAlbumDetailsByCollectionId: (collectionId: number, collectionName: string) => (Event: MouseEvent) => void;
+    fetchAlbumsByArtistId: () => void;
+    fetchAlbumDetailsByCollectionIdRedirect: (collectionId: number, collectionName: string) => (Event: MouseEvent) => void;
+    fetchAlbumDetailsByCollectionIdNoRedirect: (collectionId: number, collectionName: string) => (Event: MouseEvent) => void;
+    fetchArtistsByName: () => void;
+    searchForNewArtist: () => void;
+    inputChange: (key: string, value: string) => void;
+
 }
 interface ComponentAppStateTypes {}
 
@@ -24,31 +32,83 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
     }
 
     componentDidMount(){
-        this.props.fetchAlbumsByArtist()
+        this.props.fetchAlbumsByArtistId()
     }
 
     render(){
+
+        let artistDetails: ArtistTypes
+
+        const albumDetails: AlbumTypes [] = []
+
+        this.props.albumCollection.albums.map((artistDetailsOrAlbums) => {
+            if (artistDetailsOrAlbums.wrapperType === 'artist'){
+                artistDetails = artistDetailsOrAlbums as ArtistTypes
+            } else if (artistDetailsOrAlbums.wrapperType === 'collection') {
+                albumDetails.push(artistDetailsOrAlbums as AlbumTypes)
+            }
+        })
+
         return (
             <div className="App">
-                <Switch>
-                    <Route
-                        exact={true}
-                        path="/"
-                        render={() => {
-                            return (
-                                <AlbumCollection {...this.props}/>
-                            )
-                        }}
-                    />
-                    <Route
-                        path="/album/"
-                        render={() => {
-                            return (
-                                <AlbumDetailsView {...this.props.albumTracks} />
-                            )
-                        }}
-                    />
-                </Switch>
+                <div className="landscape-tablet-and-larger">
+                    <Switch>
+                        <Route
+                            exact={true}
+                            path="/"
+                            render={() => {
+                                return (
+                                    <div>
+                                        <div className="artist-collection">
+                                            <ArtistDetails {...artistDetails} searchForNewArtist={this.props.searchForNewArtist}/>
+                                        </div>
+                                        <AlbumCollection fetchAlbumDetailsByCollectionId={this.props.fetchAlbumDetailsByCollectionIdNoRedirect} albumDetails={albumDetails}/>
+                                        <AlbumDetailsView {...this.props.albumTracks}/>
+                                    </div>
+                            )}}
+                        />
+                        <Route
+                            path="/artistSearch"
+                            render={() => {
+                                return (
+                                    <ArtistSearch {...this.props} />
+                                )
+                            }}
+                        />
+                    </Switch>
+                </div>
+                <div className="portrait-tablet-and-smaller">
+                    <Switch>
+                        <Route
+                            exact={true}
+                            path="/"
+                            render={() => {
+                                return (
+                                    <div className="artist-collection">
+                                        <ArtistDetails {...artistDetails} searchForNewArtist={this.props.searchForNewArtist}/>
+                                        <AlbumCollection fetchAlbumDetailsByCollectionId={this.props.fetchAlbumDetailsByCollectionIdRedirect} albumDetails={albumDetails}/>
+                                    </div>
+                                )
+                            }}
+                        />
+                        <Route
+                            path="/album/"
+                            render={() => {
+                                return (
+                                    <AlbumDetailsView {...this.props.albumTracks} />
+                                )
+                            }}
+                        />
+                        <Route
+                            path="/artistSearch"
+                            render={() => {
+                                return (
+                                    <ArtistSearch {...this.props} />
+                                )
+                            }}
+                        />
+                    </Switch>
+                </div>
             </div>
         )
     }

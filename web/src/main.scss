@@ -7,9 +7,10 @@
 @import 'content/common/_common';
 
 @import 'content/_App';
-@import 'content/components/AlbumCard/_AlbumCard';
-@import 'content/components/AlbumCollection/_AlbumCollection';
+@import 'content/components/ArtistsAlbumCollection/AlbumCollection/AlbumCard/_AlbumCard';
+@import 'content/components/ArtistsAlbumCollection/AlbumCollection/_AlbumCollection';
 @import 'content/components/AlbumDetailsView/_AlbumDetailsView';
+@import 'content/components/ArtistsAlbumCollection/_ArtistAlbumCollection';
 
 body {
   margin: 0;
@@ -21,10 +22,10 @@ body {
 html {
   width: 100vw;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 #root{
-
   width: 100vw;
   background-color: $white;
 }

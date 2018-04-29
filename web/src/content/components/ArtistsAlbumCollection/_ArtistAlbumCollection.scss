@@ -1,0 +1,34 @@
+.artist-collection {
+  width: 100vw;
+  margin-top: 5px;
+  height: 70px;
+
+  @media (max-width: $portrait-tablet-to-landscape-and-desktop-max-width) {
+    overflow-y: scroll;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .artist-details-container {
+    text-align: center;
+  }
+
+  .stylized-a {
+    text-decoration: none;
+    @include bold-font;
+  }
+
+  .inline-container {
+    display: inline;
+  }
+
+  .view-button {
+    @include button;
+    padding: 2.5px 5px;
+
+  }
+
+  .search-button {
+    @include button;
+  }
+}

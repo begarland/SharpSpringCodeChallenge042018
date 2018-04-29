@@ -19,17 +19,16 @@
 }
 
 @mixin button {
-  margin-top: auto;
   height: 25px;
   text-align: center;
   vertical-align: center;
-  color: white;
-  background-color: $button-fill;
+  color: black;
+  background-color: white;
   border-radius: $border-radius;
   font-size: 13px;
   font-weight: bold;
   padding: 0 5px;
-  border: white 2px solid;
+  border: black 2px solid;
   margin: 2.5px;
 
   &:active{
