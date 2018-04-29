@@ -1,4 +1,32 @@
 .App {
   box-sizing: border-box;
   margin: auto;
+
+
+
+  @media (min-width: $portrait-tablet-to-landscape-and-desktop-max-width + 1) {
+    .landscape-tablet-and-larger {
+      display: block;
+    }
+    .portrait-tablet-and-smaller {
+      display: none;
+    }
+
+  }
+
+  @media (max-width: $portrait-tablet-to-landscape-and-desktop-max-width) {
+    .landscape-tablet-and-larger {
+      display: none;
+    }
+    .portrait-tablet-and-smaller {
+      display: block;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+
+  }
+
+
+
+
 }

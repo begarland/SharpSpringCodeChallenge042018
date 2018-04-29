@@ -1,10 +1,13 @@
+import {ArtistTypes} from './artistSearchState'
+
 export const albumCollection: AlbumCollectionStateTypes = {
     albums: [],
 }
 
 export interface AlbumCollectionStateTypes {
-    albums: AlbumTypes [];
+    albums: (ArtistTypes|AlbumTypes)[];
 }
+
 
 export interface AlbumTypes {
     wrapperType: string;

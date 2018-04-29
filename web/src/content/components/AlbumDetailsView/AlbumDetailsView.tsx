@@ -22,25 +22,35 @@ class AlbumDetailsView extends React.Component<AlbumTracksStateTypes, AlbumDetai
 
   render() {
       let albumDetails: AlbumTypes
-
       const trackDetails: TrackTypes[] = []
 
-      this.props.tracks.map((albumDetailOrTrack) => {
-          if (albumDetailOrTrack.wrapperType === 'collection'){
-              albumDetails = albumDetailOrTrack as AlbumTypes
-          } else if (albumDetailOrTrack.wrapperType === 'track') {
-              trackDetails.push(albumDetailOrTrack as TrackTypes)
-          }
-      })
+      if (this.props.tracks.length > 0){
+          this.props.tracks.map((albumDetailOrTrack) => {
+              if (albumDetailOrTrack.wrapperType === 'collection'){
+                  albumDetails = albumDetailOrTrack as AlbumTypes
+              } else if (albumDetailOrTrack.wrapperType === 'track') {
+                  trackDetails.push(albumDetailOrTrack as TrackTypes)
+              }
+          })
 
-      return (
-          <div className="album-details-view">
-              <AlbumDetails {...albumDetails}/>
-              <div className="track-container">
-                  <TrackTable trackDetails={trackDetails}/>
+          return (
+              <div className="album-details-view">
+                  <AlbumDetails {...albumDetails}/>
+                  <div className="track-container">
+                      <TrackTable trackDetails={trackDetails}/>
+                  </div>
               </div>
-          </div>
-      )
+          )
+      }
+      else {
+          return (
+              <div className="album-details-view">
+                  <Label label="Click on an album to view details" additionalClasses="bold-font album-collection-label"/>
+              </div>
+          )
+      }
+
+
   }
 
 }

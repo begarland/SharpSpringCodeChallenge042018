@@ -19,22 +19,27 @@ $purple: #992288;
 
 $white: white;
 $black: #222222;
+$light-gray: #E5E5E9;
+
+/* alternating table colors */
+$alternating-color-one: #CECEE0;
+$alternating-color-two: #DEDEEF;
+$alternating-color-three: #DBDBE3;
+$alternating-color-four: #EDEDF1;
 
 /* fonts */
-
 $header-font: 'carbon';
 $regular-font: Arial;
 $regular-font-size: 16px;
 
 /* style guide */
-$button-fill: $blue;
+$button-fill: #5F5F80;
 $text-color: $black;
 
 $border-radius: 4px;
 
 $border-dark: $black 1px solid;
 $border-light: $white 1px solid;
+$border-gray: $light-gray 1px solid;
 
-/* alternating table colors */
-$alternating-color-one: #CECEE0;
-$alternating-color-two: #DEDEEF;
+

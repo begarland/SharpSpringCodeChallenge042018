@@ -5,10 +5,10 @@ import {CHANGE_INPUT_VALUE} from '../actions/actionTypes'
 
 export default (state: AppStateTypes = appState, action) => {
     switch (action.type) {
-        case LOCATION_CHANGE: {
+        case CHANGE_INPUT_VALUE: {
             return {
                 ...state,
-
+                [action.key]: action.value
             }
         }
 
