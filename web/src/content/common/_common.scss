@@ -9,6 +9,20 @@
   @include bold-font;
 }
 
+.gray-font {
+  @include regular-font;
+  color: $gray;
+}
+
+.tab-left {
+  margin-left: 20px;
+}
+
+.centered {
+  text-align: center;
+  margin-top: 2px;
+}
+
 .inline-label{
   display: inline-block;
   vertical-align: top;
@@ -40,10 +54,10 @@
 }
 
 .inline-input-container{
-  width: 350px;
   margin: auto;
   text-align: left;
   margin-top: 5px;
+  display: inline-block;
 }
 
 
@@ -56,16 +70,10 @@
     margin: auto;
     border-collapse: collapse;
 
-
     thead th {
       @include bold-font;
       text-align: center;
       width: 13%;
-
-      &:first-of-type{
-        text-align: left;
-        width: 74%;
-      }
 
       @media (max-width: $landscape-phone-to-portrait-tablet-max-width){
         font-size: 14px;
@@ -76,38 +84,32 @@
         margin-left: 2px;
       }
 
-
     }
 
     tbody td {
       text-align: center;
-      border: $border-dark;
       width: 13%;
+      border-top: $border-gray;
 
-
-
-      &:first-of-type {
-        text-align: left;
-        width: 74%;
+      @media (max-width: $landscape-phone-to-portrait-tablet-max-width){
+        font-size: 14px;
       }
 
-      &:last-of-type {
-        text-align: center;
+      @media (max-width: $small-phone-max-width) {
+        font-size: 12px;
+        margin-left: 2px;
       }
 
     }
 
     tbody tr {
-      &:nth-of-type(odd){
-        background-color: $alternating-color-three;
-      }
-
-      &:nth-of-type(even){
-        background-color: $alternating-color-four;
+      &:last-of-type {
+        text-align: center;
+        border-bottom: $border-gray;
       }
     }
 
-  }
+   }
 
 }
 

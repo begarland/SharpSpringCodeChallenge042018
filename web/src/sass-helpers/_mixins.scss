@@ -39,8 +39,8 @@
 @mixin input{
   font-family: $regular-font;
   border-radius: $border-radius;
-  width: 150px;
-  height: 15px;
+  width: 200px;
+  height: 20px;
 }
 
 @mixin bold-font {

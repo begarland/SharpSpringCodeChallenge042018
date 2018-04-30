@@ -11,24 +11,14 @@
 
   .artist-details-container {
     text-align: center;
+    margin-top: 37px;
+    margin-bottom: 5px;
   }
 
-  .stylized-a {
-    text-decoration: none;
-    @include bold-font;
-  }
+
 
   .inline-container {
     display: inline;
   }
 
-  .view-button {
-    @include button;
-    padding: 2.5px 5px;
-
-  }
-
-  .search-button {
-    @include button;
-  }
 }

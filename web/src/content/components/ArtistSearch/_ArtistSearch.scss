@@ -1,0 +1,74 @@
+.artist-search {
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .search-container {
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    margin-left: calc((100vw - 520px)/ 2);
+
+    @media (max-width: $landscape-phone-and-below-max-width) {
+      width: 100vw;
+      margin-left: 0;
+    }
+
+    .search-button {
+      @include button;
+      margin-left: 5px;
+      width: 75px;
+    }
+  }
+
+  .search-results-spinner {
+    text-align: center;
+    font-size: 30px;
+    background-color: white;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 520px;
+    margin-left: calc((100vw - 520px)/ 2);
+    position: absolute;
+    margin-top: 32px;
+
+  }
+
+  .search-results-null {
+    height: 0px;
+  }
+
+  .search-results {
+    background-color: white;
+    min-height: 40px;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 520px;
+    margin-left: calc((100vw - 520px)/ 2);
+    position: absolute;
+    margin-top: 32px;
+
+
+    @media (max-width: $landscape-phone-and-below-max-width) {
+      width: 100vw;
+      margin-left: 0;
+      max-height: 100vh;
+    }
+
+    .artist-card {
+      &:hover{
+        background-color: $soft-white;
+      }
+    }
+
+  }
+
+  #artistNameToSearch {
+    width: calc(500px - 70px);
+
+    @media (max-width: $landscape-phone-and-below-max-width) {
+      width: calc(100vw - 100px);
+    }
+  }
+
+
+ }

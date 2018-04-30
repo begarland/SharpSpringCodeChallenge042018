@@ -1,9 +1,13 @@
 export const artistSearch: ArtistSearchTypes = {
-    artists: []
+    artists: [],
+    notFound: null,
+    spinner: false,
 }
 
 export interface ArtistSearchTypes {
     artists: ArtistTypes[]
+    notFound: null | boolean;
+    spinner: boolean;
 }
 
 export interface ArtistTypes {

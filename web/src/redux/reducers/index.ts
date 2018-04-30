@@ -8,6 +8,7 @@ import albumTracks from './albumTracksReducer'
 import fetchAlbumsByArtistId from '../epics/fetchAlbumsByArtistId'
 import fetchAlbumDetailsByCollectionIdRedirect from '../epics/fetchAlbumDetailsByCollectionIdRedirect'
 import fetchAlbumDetailsByCollectionIdNoRedirect from '../epics/fetchAlbumDetailsByCollectionIdNoRedirect'
+import fetchArtistByName from '../epics/fetchArtistsByName'
 
 export const rootReducer =  combineReducers({
     router: routerReducer,
@@ -15,13 +16,11 @@ export const rootReducer =  combineReducers({
     albumCollection,
     albumTracks,
     artistSearch,
-
-
 })
 
 export const rootEpic = combineEpics (
     fetchAlbumsByArtistId,
     fetchAlbumDetailsByCollectionIdRedirect,
     fetchAlbumDetailsByCollectionIdNoRedirect,
-
+    fetchArtistByName,
 )

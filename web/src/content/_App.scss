@@ -2,7 +2,30 @@
   box-sizing: border-box;
   margin: auto;
 
+  .stylized-a {
+    text-decoration: none;
+    @include bold-font;
+  }
 
+  .view-button {
+    @include button;
+    padding: 2.5px 5px;
+
+  }
+
+  .icon {
+    font-size: $regular-font-size;
+    vertical-align: text-bottom;
+  }
+
+  .invisible-full-screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+  }
 
   @media (min-width: $portrait-tablet-to-landscape-and-desktop-max-width + 1) {
     .landscape-tablet-and-larger {
@@ -22,6 +45,7 @@
       display: block;
       overflow-y: scroll;
       height: 100vh;
+      -webkit-overflow-scrolling: touch;
     }
 
   }
