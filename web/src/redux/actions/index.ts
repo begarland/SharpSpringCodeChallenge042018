@@ -1,6 +1,6 @@
 import {
     CHANGE_INPUT_VALUE, FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_REDIRECT, FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_NO_REDIRECT,
-    FETCH_ALBUMS_BY_ARTIST_ID, FETCH_ARTIST_BY_NAME, CHANGE_ARTIST_ID, CLOSE_SEARCH
+    FETCH_ALBUMS_BY_ARTIST_ID, FETCH_ARTIST_BY_NAME, CHANGE_ARTIST_ID, CLOSE_SEARCH, CHANGE_PLAY_STATUS
 } from './actionTypes'
 
 export const changeInputValue = (key, value) => {
@@ -31,4 +31,8 @@ export const chooseArtistToDisplay = (artistId: number) => dispatch => {
 
 export const closeSearch = () => (dispatch, getState) => {
     dispatch({type: CLOSE_SEARCH})
+}
+
+export const changePlayStatus = (trackNumber: number) => {
+    return ({type: CHANGE_PLAY_STATUS, trackNumber})
 }

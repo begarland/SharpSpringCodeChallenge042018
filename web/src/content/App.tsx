@@ -23,6 +23,8 @@ export interface AppPropTypes {
     inputChange: (key: string, value: string) => void;
     chooseArtist: (artistId: number) => (event: any) => void;
     closeSearch: () => void;
+    changePlayStatus: (trackNumber: number) => () => void;
+    pushBackToApp: () => void;
 
 }
 interface ComponentAppStateTypes {}
@@ -53,17 +55,21 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
             }
         })
 
-        return (
-            <div className="App">
-                {this.props.appState.showInvisibleFullScreen && <div className="invisible-full-screen" onClick={this.props.closeSearch}/>}
+        let AppContents
+
+        if (screen.width > 979) {
+            AppContents = (
                 <div className="landscape-tablet-and-larger">
                     <div className="artist-collection">
                         <ArtistSearch {...this.props} />
-                        <ArtistDetails {...artistDetails} searchForNewArtist={this.props.searchForNewArtist}/>
+                        <ArtistDetails {...artistDetails} />
                     </div>
-                        <AlbumCollection fetchAlbumDetailsByCollectionId={this.props.fetchAlbumDetailsByCollectionIdNoRedirect} albumDetails={albumDetails}/>
-                        <AlbumDetailsView {...this.props.albumTracks}/>
+                    <AlbumCollection fetchAlbumDetailsByCollectionId={this.props.fetchAlbumDetailsByCollectionIdNoRedirect} albumDetails={albumDetails}/>
+                    <AlbumDetailsView {...this.props.albumTracks} pushBackToApp={this.props.pushBackToApp} changePlayStatus={this.props.changePlayStatus}/>
                 </div>
+            )
+        } else {
+            AppContents = (
                 <div className="portrait-tablet-and-smaller">
                     <Switch>
                         <Route
@@ -73,7 +79,7 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
                                 return (
                                     <div className="artist-collection">
                                         <ArtistSearch {...this.props} />
-                                        <ArtistDetails {...artistDetails} searchForNewArtist={this.props.searchForNewArtist}/>
+                                        <ArtistDetails {...artistDetails}/>
                                         <AlbumCollection fetchAlbumDetailsByCollectionId={this.props.fetchAlbumDetailsByCollectionIdRedirect} albumDetails={albumDetails}/>
                                     </div>
                                 )
@@ -83,12 +89,19 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
                             path="/album/"
                             render={() => {
                                 return (
-                                    <AlbumDetailsView {...this.props.albumTracks} />
+                                    <AlbumDetailsView {...this.props.albumTracks} pushBackToApp={this.props.pushBackToApp} changePlayStatus={this.props.changePlayStatus}/>
                                 )
                             }}
                         />
                     </Switch>
                 </div>
+            )
+        }
+
+        return (
+            <div className="App">
+                {this.props.appState.showInvisibleFullScreen && <div className="invisible-full-screen" onClick={this.props.closeSearch}/>}
+                {AppContents}
             </div>
         )
     }

@@ -4,10 +4,12 @@ import { withRouter } from 'react-router-dom'
 import { AppStateTypes } from '../redux/store/templates/appState'
 import { AlbumCollectionStateTypes } from '../redux/store/templates/albumCollectionState'
 import {
-    changeInputValue, chooseArtistToDisplay, closeSearch, fetchAlbumDetailsByCollectionId, fetchAlbumsByArtistId,
+    changeInputValue, changePlayStatus, chooseArtistToDisplay, closeSearch, fetchAlbumDetailsByCollectionId,
+    fetchAlbumsByArtistId,
     fetchArtistsByName
 } from '../redux/actions/index'
 import {ArtistSearchTypes} from '../redux/store/templates/artistSearchState'
+import {push} from 'react-router-redux'
 
 interface mapStateToPropsTypes {
     appState: AppStateTypes;
@@ -50,6 +52,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         inputChange: (key, value) => {
             dispatch(changeInputValue(key, value))
         },
+        changePlayStatus: (trackNumber: number) => () => {
+            dispatch(changePlayStatus(trackNumber))
+        },
+        pushBackToApp: () => {
+            dispatch(push('/'))
+            window.location.reload()
+        }
     }
 }
 

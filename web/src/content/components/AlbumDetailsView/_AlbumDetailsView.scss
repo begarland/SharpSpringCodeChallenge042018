@@ -51,6 +51,9 @@
     display: inline-block;
     float: right;
     margin-right: 5px;
+    border: $border-gray;
+    box-sizing: border-box;
+
   }
 
   .album-details {
@@ -62,16 +65,27 @@
   table {
     thead th {
       &:first-of-type{
-        text-align: left;
-        width: 74%;
+        width: 5% !important;
+      }
+      &:nth-of-type(2){
+        text-align: left !important;
+        width: 69% !important;
       }
     }
 
     tbody td {
-      &:first-of-type {
-        text-align: left !important;
-        width: 74% !important;
+      &:first-of-type{
+        width: 5% !important;
+        font-weight: bold;
       }
+      &:nth-of-type(2) {
+        text-align: left !important;
+        width: 69% !important;
+      }
+    }
+
+    tbody tr {
+      height: 33px;
     }
   }
 

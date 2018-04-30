@@ -2,7 +2,6 @@ import * as React from 'react'
 import {ArtistTypes} from '../../../redux/store/templates/artistSearchState'
 
 interface ArtistDetailsTypes extends ArtistTypes {
-    searchForNewArtist: () => void;
 }
 
 const ArtistDetails = (props: ArtistDetailsTypes) => {

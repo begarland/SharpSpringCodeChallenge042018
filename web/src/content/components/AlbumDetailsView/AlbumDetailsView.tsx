@@ -5,10 +5,15 @@ import {AlbumTypes} from '../../../redux/store/templates/albumCollectionState'
 import TrackTable from './Track/TrackTable'
 import Label from '../../common/LabelComponents/Label'
 
+interface AlbumDetailsViewPropsTypes extends AlbumTracksStateTypes{
+    changePlayStatus: (index: number) => () => void;
+    pushBackToApp?: () => void;
+}
+
 interface AlbumDetailsViewStateTypes {}
 
 
-class AlbumDetailsView extends React.Component<AlbumTracksStateTypes, AlbumDetailsViewStateTypes>{
+class AlbumDetailsView extends React.Component<AlbumDetailsViewPropsTypes, AlbumDetailsViewStateTypes>{
   constructor(props) {
       super(props)
       this.state = {
@@ -18,6 +23,10 @@ class AlbumDetailsView extends React.Component<AlbumTracksStateTypes, AlbumDetai
 
   componentDidMount() {
       window.scrollTo(0, 0)
+      if (this.props.collectionIdToSearch === null ) {
+          this.props.pushBackToApp()
+      }
+
   }
 
   render() {
@@ -37,7 +46,7 @@ class AlbumDetailsView extends React.Component<AlbumTracksStateTypes, AlbumDetai
               <div className="album-details-view">
                   <AlbumDetails {...albumDetails}/>
                   <div className="track-container">
-                      <TrackTable trackDetails={trackDetails}/>
+                      <TrackTable trackDetails={trackDetails} changePlayStatus={this.props.changePlayStatus}/>
                   </div>
               </div>
           )
