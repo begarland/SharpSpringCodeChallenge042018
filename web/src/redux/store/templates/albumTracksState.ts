@@ -44,4 +44,5 @@ export interface TrackTypes {
     currency: string;
     primaryGenreName: string;
     isStreamable: boolean;
+    isPlaying: boolean;
 }

@@ -1,7 +1,6 @@
 import { Rxios } from 'rxios'
 import { ofType } from 'redux-observable'
 import { switchMap } from 'rxjs/operators'
-import { push } from 'react-router-redux'
 import {
     FETCH_ARTIST_BY_NAME,
     FETCH_ARTIST_BY_NAME_FAILED,

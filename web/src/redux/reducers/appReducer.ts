@@ -1,6 +1,4 @@
 import {appState, AppStateTypes} from '../store/templates/appState'
-
-import { LOCATION_CHANGE } from 'react-router-redux'
 import {
     CHANGE_ARTIST_ID, CHANGE_INPUT_VALUE, CLOSE_SEARCH, FETCH_ALBUMS_BY_ARTIST_ID_SUCCESSFUL,
     FETCH_ARTIST_BY_NAME, FETCH_ARTIST_BY_NAME_SUCCESSFUL

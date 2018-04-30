@@ -2,41 +2,25 @@ import * as React from 'react'
 import FilePlayer from 'react-player/lib/players/FilePlayer'
 import PlayPauseButton from '../../../common/Buttons/PlayPauseButton'
 
-interface TrackPreviewPropTypes {
+interface TrackPreviewTypes {
     previewUrl: string;
+    isPlaying: boolean,
+    changePlayStatus: () => void;
+
 }
-interface TrackPreviewStateTypes {
-    isPlaying: boolean;
-}
 
-class TrackPreview extends React.Component<TrackPreviewPropTypes, TrackPreviewStateTypes> {
-    constructor(props){
-        super(props)
-        this.state = {
-            isPlaying: false,
-        }
-    }
-
-    changePlayStatus = () => {
-        this.setState({
-            isPlaying: !this.state.isPlaying
-        })
-    }
-
-    render(){
+const TrackPreview = (props: TrackPreviewTypes) => {
         return (
             <div>
                 <FilePlayer
-                    className="test"
-                    url={this.props.previewUrl}
-                    playing={this.state.isPlaying}
+                    url={props.previewUrl}
+                    playing={props.isPlaying}
                     height="0px"
                     width="0px"
                 />
-                <PlayPauseButton isPlaying={this.state.isPlaying} onClick={this.changePlayStatus}/>
+                <PlayPauseButton isPlaying={props.isPlaying} onClick={props.changePlayStatus}/>
             </div>
         )
     }
-}
 
 export default TrackPreview

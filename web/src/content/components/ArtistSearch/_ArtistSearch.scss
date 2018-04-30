@@ -55,6 +55,8 @@
     }
 
     .artist-card {
+      border-bottom: $border-gray;
+
       &:hover{
         background-color: $soft-white;
       }
@@ -64,9 +66,10 @@
 
   #artistNameToSearch {
     width: calc(500px - 70px);
+    @include regular-font;
 
     @media (max-width: $landscape-phone-and-below-max-width) {
-      width: calc(100vw - 100px);
+      width: calc(100vw - 120px);
     }
   }
 

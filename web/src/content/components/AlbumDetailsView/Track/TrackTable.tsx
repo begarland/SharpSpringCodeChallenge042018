@@ -6,18 +6,26 @@ import TrackPreview from './TrackPreview'
 
 export interface TrackTableTypes {
     trackDetails: TrackTypes[];
+    changePlayStatus: (trackNumber: number) => () => void;
 }
 
 const TrackTable = (props: TrackTableTypes) => {
-    const tableColumnHeaders = {trackName: 'Name', trackLength: 'Length', previewUrl: 'Sample',}
+    const tableColumnHeaders = {trackNumber: '', trackName: 'Name', trackLength: 'Length', previewUrl: 'Sample',}
 
     const trackData = []
 
-    props.trackDetails.map((track) => {
+    props.trackDetails.map(track => {
+        const trackNumber = track.trackNumber
         const trackName = track.trackName
-        const previewUrl = <TrackPreview previewUrl={track.previewUrl}/>
-        const trackLength = millisecondsToMinutesAndSecond(track.trackTimeMillis)
-        trackData.push({trackName, previewUrl, trackLength})
+        const previewUrl = (track.previewUrl ?
+            <TrackPreview
+                previewUrl={track.previewUrl}
+                isPlaying={track.isPlaying}
+                changePlayStatus={props.changePlayStatus(track.trackNumber)}
+            /> : ''
+        )
+        const trackLength = (track.trackTimeMillis ? millisecondsToMinutesAndSecond(track.trackTimeMillis) : '')
+        trackData.push({trackNumber, trackName, previewUrl, trackLength})
     })
 
     return (
