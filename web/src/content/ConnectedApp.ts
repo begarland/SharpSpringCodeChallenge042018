@@ -56,8 +56,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(changePlayStatus(trackNumber))
         },
         pushBackToApp: () => {
-            dispatch(push('/'))
-            window.location.reload()
+            if (screen.width > 979) {
+                return null
+            } else {
+                dispatch(push('/'))
+                window.location.reload()
+            }
         }
     }
 }

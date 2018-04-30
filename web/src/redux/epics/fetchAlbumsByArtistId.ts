@@ -1,7 +1,6 @@
 import { ofType } from 'redux-observable'
 import { switchMap } from 'rxjs/operators'
 import { Rxios } from 'rxios'
-import { push } from 'react-router-redux'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/observable/from'
 import 'rxjs/add/observable/of'

@@ -15,6 +15,7 @@ export interface AppPropTypes {
     albumCollection: AlbumCollectionStateTypes;
     albumTracks: AlbumTracksStateTypes;
     artistSearch: ArtistSearchTypes;
+    location: {pathname: string};
     fetchAlbumsByArtistId: () => void;
     fetchAlbumDetailsByCollectionIdRedirect: (collectionId: number, collectionName: string) => (Event: MouseEvent) => void;
     fetchAlbumDetailsByCollectionIdNoRedirect: (collectionId: number, collectionName: string) => (Event: MouseEvent) => void;
@@ -65,7 +66,7 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
                         <ArtistDetails {...artistDetails} />
                     </div>
                     <AlbumCollection fetchAlbumDetailsByCollectionId={this.props.fetchAlbumDetailsByCollectionIdNoRedirect} albumDetails={albumDetails}/>
-                    <AlbumDetailsView {...this.props.albumTracks} pushBackToApp={this.props.pushBackToApp} changePlayStatus={this.props.changePlayStatus}/>
+                    <AlbumDetailsView {...this.props.albumTracks} pushBackToApp={this.props.pushBackToApp} location={this.props.location} changePlayStatus={this.props.changePlayStatus}/>
                 </div>
             )
         } else {
@@ -89,7 +90,7 @@ class App extends React.Component<AppPropTypes, ComponentAppStateTypes> {
                             path="/album/"
                             render={() => {
                                 return (
-                                    <AlbumDetailsView {...this.props.albumTracks} pushBackToApp={this.props.pushBackToApp} changePlayStatus={this.props.changePlayStatus}/>
+                                    <AlbumDetailsView {...this.props.albumTracks} pushBackToApp={this.props.pushBackToApp} location={this.props.location} changePlayStatus={this.props.changePlayStatus}/>
                                 )
                             }}
                         />

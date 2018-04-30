@@ -29,7 +29,7 @@ export const chooseArtistToDisplay = (artistId: number) => dispatch => {
     dispatch({type: FETCH_ALBUMS_BY_ARTIST_ID})
 }
 
-export const closeSearch = () => (dispatch, getState) => {
+export const closeSearch = () => (dispatch) => {
     dispatch({type: CLOSE_SEARCH})
 }
 

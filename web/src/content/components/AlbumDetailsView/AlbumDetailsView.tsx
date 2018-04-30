@@ -8,6 +8,7 @@ import Label from '../../common/LabelComponents/Label'
 interface AlbumDetailsViewPropsTypes extends AlbumTracksStateTypes{
     changePlayStatus: (index: number) => () => void;
     pushBackToApp?: () => void;
+    location: {pathname: string};
 }
 
 interface AlbumDetailsViewStateTypes {}
@@ -23,7 +24,7 @@ class AlbumDetailsView extends React.Component<AlbumDetailsViewPropsTypes, Album
 
   componentDidMount() {
       window.scrollTo(0, 0)
-      if (this.props.collectionIdToSearch === null ) {
+      if (this.props.collectionIdToSearch === null && this.props.location.pathname !== '/' ) {
           this.props.pushBackToApp()
       }
 
