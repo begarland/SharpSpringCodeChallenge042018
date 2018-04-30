@@ -1,5 +1,4 @@
 import * as React from 'react'
-import LabelComponent from '../../../common/LabelComponents/Label'
 import {AlbumTypes} from '../../../../redux/store/templates/albumCollectionState'
 import LabelPairComponent from '../../../common/LabelComponents/LabelPair'
 import {dateFormatToReadableDate} from '../../../common/commonFunctions'

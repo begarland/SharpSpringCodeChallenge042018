@@ -20,10 +20,9 @@ const fetchAlbumDetailsByCollectionId = (action$, store) =>
         ofType(FETCH_ARTIST_BY_NAME),
         switchMap(() =>
             Observable.from(
-                axios.get(`https://itunes.apple.com/lookup?term=${store.getState().appState.artistNameToSearch}&entity=musicArtist`)
+                axios.get(`https://itunes.apple.com/search?term=${(store.getState().appState.artistNameToSearch).replace(/\s+/g,"+")}&entity=musicArtist`)
                     .mergeMap(response => Observable.of(
                         { type: FETCH_ARTIST_BY_NAME_SUCCESSFUL, artists: response } as any,
-                        push(`/album/${store.getState().albumTracks.collectionName}`),
                     )).catch(error => Observable.of(
                     { type: FETCH_ARTIST_BY_NAME_FAILED, error: error } as any
                 ))

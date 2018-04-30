@@ -8,6 +8,7 @@ import App from './App'
 import {appState} from '../redux/store/templates/appState'
 import {albumCollection} from '../redux/store/templates/albumCollectionState'
 import {albumTracks} from '../redux/store/templates/albumTracksState'
+import {artistSearch} from '../redux/store/templates/artistSearchState'
 
 Enzyme.configure({adapter: new Adapter()})
 
@@ -20,6 +21,8 @@ describe('<App/>', () => {
     const fetchArtistsByName = sinon.spy()
     const searchForNewArtist = sinon.spy()
     const inputChange = sinon.spy()
+    const chooseArtist = sinon.spy()
+    const closeSearch = sinon.spy()
 
 
     const AppAllProps = (
@@ -27,12 +30,15 @@ describe('<App/>', () => {
             appState={appState}
             albumCollection={albumCollection}
             albumTracks={albumTracks}
+            artistSearch={artistSearch}
             fetchAlbumsByArtistId={fetchAlbumsByArtistId}
             fetchAlbumDetailsByCollectionIdRedirect={fetchAlbumDetailsByCollectionIdRedirect}
             fetchAlbumDetailsByCollectionIdNoRedirect={fetchAlbumDetailsByCollectionIdNoRedirect}
             fetchArtistsByName={fetchArtistsByName}
             searchForNewArtist={searchForNewArtist}
             inputChange={inputChange}
+            chooseArtist={chooseArtist}
+            closeSearch={closeSearch}
         />)
 
     let AppAllPropsShallow

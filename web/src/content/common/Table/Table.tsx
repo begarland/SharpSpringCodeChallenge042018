@@ -6,14 +6,14 @@ export interface TableProps {
     customPlaceholder?: string;
     data?: object[];
     showPrimaryKey?: boolean;
-    tableClick?(event: any)
+    tableClick?(event: any);
 }
 
 const Table = (props: TableProps) => {
 
     const renderTableHeaderColumns = () => {
         return Object.keys(props.columnHeaders).map((key) => {
-            return <th key={key} >{props.columnHeaders[key]}</th>
+            return <th key={key}> {props.columnHeaders[key]}</th>
         })
     }
 
@@ -54,6 +54,7 @@ const Table = (props: TableProps) => {
                             className="tableRowKey"
                             href="/#"
                             data-value={datum[key]}
+                            onClick={props.tableClick}
                         >
                             {datum[key]}
                         </a>

@@ -58,4 +58,21 @@
 
   }
 
+
+  table {
+    thead th {
+      &:first-of-type{
+        text-align: left;
+        width: 74%;
+      }
+    }
+
+    tbody td {
+      &:first-of-type {
+        text-align: left !important;
+        width: 74% !important;
+      }
+    }
+  }
+
 }

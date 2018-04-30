@@ -3,7 +3,7 @@ import {
     FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_FAILED,
     FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_NO_REDIRECT,
     FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_REDIRECT,
-    FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_SUCCESSFUL
+    FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_SUCCESSFUL, FETCH_ALBUMS_BY_ARTIST_ID,
 } from '../actions/actionTypes'
 
 
@@ -30,6 +30,13 @@ export default (state: AlbumTracksStateTypes = albumTracks, action) => {
             }
         }
         case FETCH_ALBUM_DETAILS_BY_COLLECTION_ID_FAILED: {
+            return {
+                ...state,
+                collectionIdToSearch: null,
+                tracks: []
+            }
+        }
+        case FETCH_ALBUMS_BY_ARTIST_ID: {
             return {
                 ...state,
                 collectionIdToSearch: null,
